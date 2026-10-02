@@ -13,7 +13,7 @@ body {
   min-height: 100vh;
 }
 
-/* Add form label styling */
+/* Form label */
 .form-label {
   display: block;
   text-align: left;
@@ -25,13 +25,15 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       135deg,
       rgba(0, 153, 219, 0.9) 0%,
       rgba(0, 104, 181, 0.9) 50%,
       rgba(0, 60, 116, 0.9) 100%
     ),
     url("img/bg.jpg");
+
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -103,7 +105,14 @@ body {
   width: 100%;
 }
 
-/* Form elements */
+.input-wrapper {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* Input */
 input {
   flex: 1;
   padding: 16px 20px;
@@ -116,13 +125,30 @@ input {
   transition: all 0.3s ease;
   outline: none;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  min-width: 0;
 }
 
-input:focus {
+input:focus,
+select:focus {
   border-color: #0071c5;
   box-shadow: 0 0 0 4px rgba(0, 113, 197, 0.15);
+  outline: none;
 }
 
+/* Select */
+select {
+  padding: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 500;
+  background: white;
+  color: #2c3e50;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+/* Button */
 button {
   background-color: #0071c5;
   color: white;
@@ -152,7 +178,7 @@ button:hover {
   white-space: nowrap;
 }
 
-/* Icon spacing */
+/* Icons */
 .fas {
   margin-right: 8px;
 }
@@ -162,23 +188,7 @@ button .fas {
   margin-right: 10px;
 }
 
-.attendance-header i {
-  font-size: 22px;
-  margin-right: 8px;
-}
-
-/* Attendance section spacing */
-.attendance-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 15px;
-  font-size: 17px;
-  color: #64748b;
-}
-
-/* Attendance tracker styling */
+/* Attendance tracker */
 .attendance-tracker {
   max-width: 700px;
   width: 90%;
@@ -197,6 +207,12 @@ button .fas {
   color: #64748b;
 }
 
+.attendance-header i {
+  color: #0071c5;
+  font-size: 20px;
+  margin-right: 4px;
+}
+
 #attendeeCount {
   color: #0071c5;
   font-size: 24px;
@@ -204,19 +220,7 @@ button .fas {
   margin: 0 2px;
 }
 
-.attendance-header i {
-  color: #0071c5;
-  font-size: 20px;
-  margin-right: 4px;
-}
-
-/* Max attendees text */
-.attendance-header span:last-child {
-  color: #64748b;
-  font-size: 17px;
-}
-
-/* Progress container - simplified */
+/* Progress bar */
 .progress-container {
   width: 100%;
   max-width: 500px;
@@ -237,12 +241,7 @@ button .fas {
   transition: width 0.6s ease;
 }
 
-/* Adjust spacing between components */
-.container {
-  margin-top: 0;
-}
-
-/* Messages */
+/* Greeting */
 #greeting {
   font-weight: 500;
   font-size: 18px;
@@ -254,54 +253,16 @@ button .fas {
 }
 
 .success-message {
+  display: block !important;
   background-color: #e8f4fc;
   color: #003c71;
 }
 
-/* Counter */
-#attendeeCount {
-  color: #0071c5;
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0 2px;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 40px 20px;
-  color: #94a3b8;
-  font-size: 14px;
-}
-
-.footer-link {
-  color: #64748b;
-  text-decoration: none;
-}
-
-.footer-link:hover {
-  color: #0071c5;
-  text-decoration: underline;
-}
-
-/* Input wrapper for name and team select */
-.input-wrapper {
-  flex: 1;
-  display: flex;
-  gap: 10px;
-  min-width: 0;
-}
-
-select {
-  padding: 16px;
-  border: 2px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: 500;
-  background: white;
-  color: #2c3e50;
-  cursor: pointer;
-  min-width: 140px;
+.celebration-message {
+  display: block !important;
+  background-color: #ecfdf3;
+  color: #166534;
+  border: 2px solid #86efac;
 }
 
 /* Team Stats */
@@ -329,15 +290,17 @@ select {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  transition: all 0.3s ease;
 }
 
-/* Team card colors */
 .team-card.water {
   background-color: #e8f7fc;
 }
+
 .team-card.zero {
   background-color: #ecfdf3;
 }
+
 .team-card.power {
   background-color: #fff7ed;
 }
@@ -348,24 +311,120 @@ select {
   color: #475569;
 }
 
+.team-count {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Winning team */
+.team-card.winner {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 0 3px #facc15,
+    0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Attendee list */
+.attendee-section {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 2px solid #f1f5f9;
+  text-align: left;
+}
+
+.attendee-section h3 {
+  text-align: center;
+  color: #64748b;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+#emptyListMessage {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+#attendeeList {
+  list-style: none;
+  padding: 0;
+}
+
+.attendee-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  background-color: #f8fafc;
+  border-radius: 10px;
+}
+
+.attendee-name {
+  font-weight: 600;
+  color: #334155;
+}
+
+.attendee-team {
+  color: #64748b;
+  font-size: 14px;
+  text-align: right;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.footer-link {
+  color: #64748b;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #0071c5;
+  text-decoration: underline;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .hero {
     padding: 35px 20px;
   }
+
   .hero h1 {
     font-size: 38px;
   }
+
+  .hero p {
+    font-size: 18px;
+  }
+
   .container {
-    padding: 32px;
-    margin: 0 15px 30px;
+    width: 90%;
+    padding: 20px;
+    margin: 0 auto 30px;
+  }
+
+  .check-in {
+    padding: 20px;
   }
 
   .form-group {
     flex-direction: column;
   }
 
+  .input-wrapper {
+    flex-direction: column;
+  }
+
   input,
+  select,
   button {
     width: 100%;
   }
@@ -374,11 +433,16 @@ select {
     height: 50px;
   }
 
-  .input-wrapper {
-    flex-direction: column;
-  }
-
   .teams-grid {
     grid-template-columns: 1fr;
+  }
+
+  .attendee-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .attendee-team {
+    text-align: left;
   }
 }
